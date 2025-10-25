@@ -1,40 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Code Renderer</title>
 <style>
-  .bar {
-    border: 2px solid red;
-    padding: 10px;
+  body {
+    background: #000;
+    color: #0f0;
     font-family: monospace;
+    margin: 40px;
+    line-height: 1.6;
+  }
+
+  .bar {
+    border: 2px solid #f00;
+    padding: 12px 20px;
     font-size: 18px;
-    color: lime;
-    background: black;
+    color: #0f0;
+    background: #111;
     display: inline-block;
+    border-radius: 6px;
+    box-shadow: 0 0 10px red;
+    transition: box-shadow 0.3s ease-in-out;
+  }
+
+  .bar:hover {
+    box-shadow: 0 0 20px #ff3333;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #333;
+    margin-top: 30px;
+  }
+
+  b {
+    color: #ff3333;
+  }
+
+  u {
+    text-decoration: underline dotted #0f0;
   }
 </style>
+</head>
+<body>
 
-<b>Hello! this is the time and date ----> </b>
+<b>Hello!</b>
 <div class="bar" id="clock">Loading clock...</div>
 
-<br><br>Paste your code into the <u>text field</u> and it will be rendered here. Supports all
-HTML, CSS, and JS that your browser supports.
+<p>
+  Paste your code into the <u>text field</u> and it will be rendered here. Supports all
+  HTML, CSS, and JS that your browser supports.
+</p>
 
-<br><br>Press the Link button to get a shareable link to your code! Note
-that significantly long URLs might not work correctly.
+<p>
+  Press the <b>Link</b> button to get a shareable link to your code! Note that significantly long URLs might not work correctly.
+</p>
 
-<br><br>Changes are updated live. Uncheck Live Update if this is
-annoying.
+<p>
+  Changes are updated live. Uncheck <b>Live Update</b> if this is annoying.
+</p>
 
-<br><br>This editor supports simultaneous HTML, JavaScript, and CSS syntax highlighting. Shown
-below is a simple demonstration:
-<br><br>
+<p>
+  This editor supports simultaneous HTML, JavaScript, and CSS syntax highlighting. Shown below is a simple demonstration:
+</p>
+
+<hr>
 
 <script>
   function updateClock() {
     const now = new Date();
-    document.getElementById("clock").textContent =
-      now.toLocaleTimeString() + " | " + now.toLocaleDateString();
+    const time = now.toLocaleTimeString();
+    const date = now.toLocaleDateString();
+    document.getElementById("clock").textContent = `${time} | ${date}`;
   }
 
-  updateClock();                // show immediately
-  setInterval(updateClock, 1000); // update every second forever
+  updateClock();
+  setInterval(updateClock, 1000);
 </script>
 
-<hr>
+</body>
+</html>
