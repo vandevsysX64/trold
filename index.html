@@ -1,14 +1,19 @@
 <style>
-    .bar {
-        border: 2px solid red;
-    }
+  .bar {
+    border: 2px solid red;
+    padding: 10px;
+    font-family: monospace;
+    font-size: 18px;
+    color: lime;
+    background: black;
+    display: inline-block;
+  }
 </style>
 
 <b>Hello!</b>
-<div class='bar'>
+<div class="bar" id="clock">Loading clock...</div>
 
-</div>
-<br><br> Paste your code into the <u>text field</u> and it will be rendered here. Supports all
+<br><br>Paste your code into the <u>text field</u> and it will be rendered here. Supports all
 HTML, CSS, and JS that your browser supports.
 
 <br><br>Press the Link button to get a shareable link to your code! Note
@@ -22,7 +27,14 @@ below is a simple demonstration:
 <br><br>
 
 <script>
-    let currentTime = new Date(Date.now());
-    document.currentScript.outerHTML = `The document was last updated ${currentTime.toLocaleString()}`;  
+  function updateClock() {
+    const now = new Date();
+    document.getElementById("clock").textContent =
+      now.toLocaleTimeString() + " | " + now.toLocaleDateString();
+  }
+
+  updateClock();                // show immediately
+  setInterval(updateClock, 1000); // update every second forever
 </script>
+
 <hr>
